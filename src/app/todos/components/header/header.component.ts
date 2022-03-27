@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodosService } from '../../services/todos.service';
 
 @Component({
   selector: 'app-todos-header',
@@ -12,7 +13,11 @@ export class HeaderComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private todoService: TodosService) {
+
+
+
+  }
 
   ngOnInit(): void {
   }
@@ -27,7 +32,8 @@ export class HeaderComponent implements OnInit {
 
 
   addTodo(): void {
-    console.log('addTodo', this.text);
+    this.todoService.addTodo(this.text);
+    this.text = '';
   }
 
 }
